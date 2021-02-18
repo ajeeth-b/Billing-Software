@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+	<form action="/book/room/{{room_id}}", method="post">
+		{% with messages = get_flashed_messages(category_filter=["book_room_error"]) %}
+          {% if messages %}
+              <p style="color: #ff1a1a; text-align: center;"><i>
+              {{messages[-1]}}
+              </i></p>
+          {% endif %}
+        {% endwith %}
+		<div class="form-group col-md-5">
+			<label for="name">Name</label>
+			<input name='name' type="text" class="form-control" id="name" placeholder="Name" value="{{name}}" required>
+		</div>
+		<div class="form-group col-md-2">
+			<label for="no-of-person">No.	 of person</label>
+			<input  name='no_of_person' type="number" class="form-control" id="no-of-person" placeholder="1 to 10" min="0" value="{{no_of_person}}" required>
+		</div>
+		<div class="form-group col-md-6">
+			<label for="inputAddress">Address</label>
+			<input  name='address1' type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" value="{{address1}}" required>
+		</div>
+		<div class="form-group col-md-6">
+			<label for="inputAddress2">Address 2</label>
+			<input name='address2'  type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" value="{{address2}}">
+		</div>
+		<div class="form-row col-md">
+			<div class="form-group col-md-5">
+				<label for="inputCity">City</label>
+				<input  name='city' type="text" class="form-control" id="inputCity" value="{{city}}" required>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputState">State</label>
+				<input name='state' type="text" id="inputState" class="form-control" value="Tamilnadu" value="{{state}}" required>
+			</div>
+		</div>
+		<div class="form-row col-md">
+			<div class="form-group col-md-4">
+				<label for="inputCountry">Country</label>
+				<input name='country' type="text" id="inputCountry" class="form-control" value='India'  value="{{country}}" required>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="inputZip">Zip</label>
+				<input name='zip' type="text" class="form-control" id="inputZip" value="{{zip}}" required>
+			</div>
+		</div>
+		<div class="form-group col-md-3">
+			<label for="contact_number">Contact Number</label>
+			<input name="contact_number" type="number" class="form-control" id="contact_number" placeholder="9876543210" value="{{contact_number}}" required>
+		</div>
+		<div class="form-group col-md-3">
+			<label for="room_no">Room no</label>
+			<input name="room_no" type="number" class="form-control" id="room_no" value="{{room_no}}" required disabled>
+		</div>
+		<div class="form-row col-md">
+			<div class="form-group col-md-4">
+				<label for="datetime1">In Time</label>
+				<input type="datetime-local" class="form-control" id="datetime1" name="in_time" value="{{datetime}}" required>
+			</div>
+		</div>
+		<div class="form-group row col-md-10">
+			<label for="advance" class="col-md-2 col-form-label">Advance</label>
+			<div class="col-md-10">
+				<input name='advance' type="number" step="0.01" class="form-control" id="advance" placeholder="0" value="{{advance}}" required>
+			</div>
+		</div>
+		<div class="form-group row col-md-8">
+			<div class="col-md-10">
+				<button type="submit" class="btn btn-primary">Book</button>
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}

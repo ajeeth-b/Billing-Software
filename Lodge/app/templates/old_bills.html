@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th scope="col">ID</th>
+	      <th scope="col">Name</th>
+	      <th scope="col">Room No</th>
+	      <th scope="col">In Time</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		{% for bill in bills %}
+	    <tr onclick="window.location.href = '/bill/print/{{bill.id}}'">
+	      <th scope="row">{{bill.id}}</th>
+	      <td>{{bill.name}}</td>
+	      <td>{{bill.room_no}}</td>
+	      <td>{{bill.in_time}}</td>
+	    </tr>
+		{% endfor %}
+	  </tbody>
+	</table>
+
+	<nav aria-label="Page navigation example">
+	  <ul class="pagination justify-content-center">
+	    <li class="page-item {% if page_no == 1 %}disabled {% endif %}">
+	      <a class="page-link" href="/bill/old/{{page_no-1}}">Previous</a>
+	    </li>
+
+	    {% if page_no==2 %}
+	    <li class="page-item"><a class="page-link" href="/bill/old/1">1</a></li>
+	    {% endif %}
+	    {% if page_no>2 %}
+	    <li class="page-item"><a class="page-link" href="/bill/old/{{page_no-1}}">{{page_no-1}}</a></li>
+	    {% endif %}
+	    <li class="page-item"><a class="page-link active" href="/bill/old/{{page_no}}">{{page_no}}</a></li>
+	    {% if total_p-page_no > 0 %}
+	    <li class="page-item"><a class="page-link" href="/bill/old/{{page_no+1}}">{{page_no+1}}</a></li>
+	    {% endif %}
+	    <li class="page-item {% if page_no == total_p %}disabled {% endif %}">
+	    	<a class="page-link" href="/bill/old/{{page_no+1}}">Next</a>
+	    </li>
+	  </ul>
+	</nav>
+</div>
+{% endblock %}
