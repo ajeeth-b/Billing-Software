@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<script>
+	setTimeout(function(){
+		window.location.href = '/';
+	}, 30*1000);
+</script>
+<h1> {{message}}</h1>
+{% endblock %}
