@@ -1,46 +1,277 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
-<style type="text/css">
-	@media print {
-		.noPrint{
-			display:none;
-		}
-	}
+<style>
+    .invoice-box {
+        max-width: 800px;
+        /*height: 25.7cm; */
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
+    }
 </style>
 
-<div id='print-data'>
-	<p>Invoice ID</p>  <p>{{data.id}}</p><br>
-	<p>Room No</p>  <p>{{data.room_no}}</p><br>
-	<p>Name</p>  <p>{{data.customer_name}}</p><br>
-	<p>No of person</p>  <p>{{data.no_of_person}}</p><br>
-	<p>address1</p>  <p>{{data.address1}}</p><br>
-	<p>address2</p>  <p>{{data.address2}}</p><br>
-	<p>City</p>  <p>{{data.city}}</p><br>
-	<p>State</p>  <p>{{data.sate}}</p><br>
-	<p>Country</p>  <p>{{data.country}}</p><br>
-	<p>Zip Code</p>  <p>{{data.zip}}</p><br>
-	<p>Contact Number</p>  <p>{{data.contact_no}}</p><br>
-	<p>In time</p>  <p>{{data.in_time}}</p><br>
-	<p>Out time</p>  <p>{{data.out_time}}</p><br>
-	<p>Advance</p>  <p>{{data.advance}}</p><br>
-	<p>Loding Charge</p>  <p>{{data.cost}}</p><br>
-	<p>Convenience</p>  <p>{{data.extra_cost}}</p><br>
-	<p>Miscellaneous</p>  <p>{{data.miscellaneous}}</p><br>
-	<p>Luxary</p>  <p>{{data.luxary}}</p><br>
-	<p>GST</p>  <p>{{data.gst}}</p><br>
-	<p>Total</p>  <p>{{data.total}}</p><br>
-	<p>Customer ID</p>  <p>{{data.customer_id}}</p><br>
-</div>
+<div style="margin-top: 10px;">
+    <div id="printable">
+        <style type="text/css">
 
+            .invoice-box table {
+                width: 100%;
+                line-height: inherit;
+                text-align: left;
+            }
+
+            .invoice-box table td {
+                padding: 5px;
+                vertical-align: top;
+            }
+
+            .invoice-box table tr td:nth-child(2) {
+                text-align: right;
+            }
+
+            .invoice-box table tr.top table td {
+                padding-bottom: 20px;
+            }
+
+            .invoice-box table tr.top table td.title {
+                font-size: 40px;
+                font-style: italic;
+                /*line-height: 45px;*/
+                /*color: #333;*/
+            }
+
+            .invoice-box table tr.information table td {
+                padding-bottom: 40px;
+            }
+
+            .invoice-box table tr.heading td {
+                background: #eee;
+                border-bottom: 1px solid #ddd;
+                font-weight: bold;
+            }
+
+            .invoice-box table tr.details td {
+                padding-bottom: 20px;
+            }
+
+            .invoice-box table tr.item td{
+                border-bottom: 1px solid #eee;
+            }
+
+            .invoice-box table tr.item.last td {
+                border-bottom: none;
+            }
+
+            .invoice-box table tr.total td:nth-child(2) {
+                border-top: 2px solid #eee;
+                font-weight: bold;
+            }
+
+            @media only screen and (max-width: 600px) {
+                .invoice-box table tr.top table td {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+
+                .invoice-box table tr.information table td {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+            }
+
+            /** RTL **/
+            .rtl {
+                direction: rtl;
+                font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            }
+
+            .rtl table {
+                text-align: right;
+            }
+
+            .rtl table tr td:nth-child(2) {
+                text-align: left;
+            }
+
+</style>
+<div class="invoice-box" id='invoice-div'>
+    <table cellpadding="0" cellspacing="0">
+        <p style="text-align: center; margin-top: 30px; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;">
+            <span style="font-size: 50px;line-height: 0px;">Sri Kanimani Lodge</span><br>
+            <span style="font-size: 12px;line-height: 0px;">
+                146, 100 Feet Road, Gandhipuram, Coimbatore-641 012<br>
+                ✆0422 2528439, 2528439
+            </span>
+        </p>
+        <!-- <tr class="top">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td class="title" style="align-content: center;">
+                            Sri Kanimani Lodge
+                            <br>
+                            <span style="font-size: 12px;line-height: 0px;">
+                                146, 100 Feet Road, Gandhipuram, Coimbatore-641 012<br>
+                                ✆0422 2528439, 2528439
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr> -->
+        <tr class="information">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td>
+                            Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Mr/Ms {{data.name}}<br>
+                            Room No: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.room_no}}<br>
+                            No of person: &nbsp&nbsp&nbsp{{data.no_of_person}}<br>
+                            In time: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.in_time}}<br>
+                            Out time: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.out_time}}
+                        </td>
+                        <td>
+                            Invoice: #{{data.id}}<br>
+                            {{curent_time}}<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{data.address1}}, {{data.address2}}<br>
+                            City: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.city}} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Zip: {{data.zip}}<br> 
+                            State: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.state}} <br>
+                            Country: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.country}}<br>
+                            Contact No: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.contact_number}}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="heading">
+            <td>
+                Usage
+            </td>
+
+            <td>
+                Price
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                Advance
+            </td>
+            <td>
+                ₹{{data.advance}}
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                Loding Charge
+            </td>
+            <td>
+                ₹{{data.cost}}
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                Convenience
+            </td>
+            <td>
+                ₹{{data.extra_cost}}
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                Miscellaneous
+            </td>
+            <td>
+                ₹{{data.miscellaneous}}
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                Luxary
+            </td>
+            <td>
+                ₹{{data.luxary}}
+            </td>
+        </tr>
+
+        <tr class="item last">
+            <td>
+                GST
+            </td>
+            <td>
+                ₹{{data.gst}}
+            </td>
+        </tr>
+
+        <tr class="total">
+            <td></td>
+            <td>
+                Total: ₹{{data.total}}
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <br><br><br><br><br><br>
+            </td>
+            <td>
+                <br><br><br><br><br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Residant signature
+            </td>
+            <td>
+                Manager signature
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+</div>
+<br><br><br>
 <script type="text/javascript">
-	function print_bill(){
-		w = window.open();
-		w.write(document.getElementById('PrintButton').innerH‌​TML);
-		w.print();
-		w.close();
-	}
+    console.log('temp');
+    function print_bill(){
+        var page = document.body.innerHTML;
+// var invoice_div = document.getElementById('invoice-div');
+// document.getElementById('invoice-div').style.height = '25.7cm';
+// document.getElementById('invoice-div').style.width = '100%';
+var print_content = document.getElementById('printable');
+
+// console.log(invoice_div.style.height, invoice_div.style.width);
+new_style = "<style>.invoice-box {width: 100%;height: 100%;margin: auto;padding: 60px;padding-top: 100px;font-size: 16px;line-height: 24px;font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color: #555;}</style>";
+console.log(print_content.innerHTML);
+document.body.innerHTML = new_style+ print_content.innerHTML;
+window.print();
+document.body.innerHTML = page;
+}
 </script>
+<style type="text/css">
+    @media print {
+        .noPrint{
+            display:none;
+        }
+    }
+</style>
 <button class="noPrint" id="PrintButton" onclick="print_bill()">Print</button>
 {% endblock %}

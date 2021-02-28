@@ -7,7 +7,7 @@ room = Blueprint('rooms', __name__)
 @room.route('/')
 @login_required
 def get_room():
-	rooms = Room.query.all()
+	rooms = Room.query.order_by(Room.room_no).all()
 	return render_template('room.html', rooms=rooms)
 
 @room.route('/add_room', methods=['POST'])

@@ -22,12 +22,12 @@ def all_bill_data(bill):
 		'customer_id':customer.id,
 		'name':customer.name,
 		'no_of_person':customer.count,
-		'address1':customer.address1,
-		'address2':customer.address2,
-		'city':customer.city,
-		'state':customer.state,
-		'country':customer.country,
-		'zip':customer.zip_code,
+		'address1':customer.address1 or '',
+		'address2':customer.address2 or '',
+		'city':customer.city or '',
+		'state':customer.state or '',
+		'country':customer.country or '',
+		'zip':customer.zip_code or '',
 		'contact_number':customer.contact_no,
 		'in_time':bill.in_time.strftime('%Y/%m/%d %I:%M %p') if bill.in_time else None,
 		'out_time':bill.out_time.strftime('%Y/%m/%d %I:%M %p') if bill.out_time else None,
@@ -101,7 +101,7 @@ def post_book_room(id):
 	form = DictToObject(**request.form)
 
 	customer = Customer(name=form.name, count=form.no_of_person, 
-		address1=form.address1, address2=form.address2, state=form.state,
+		address1=form.address1, address2=form.address2, state=form.state,city=form.city,
 		country=form.country, zip_code=form.zip, contact_no=form.contact_number, 
 		created_by=current_user.id)
 	customer.save()
@@ -222,6 +222,13 @@ def print_bill(id):
 	bill = Bill.query.filter_by(id=id).first()
 	data = DictToObject(**all_bill_data(bill))
 	return render_template('print_bill.html', data=data)
+
+@bill_blueprint.route('/bill/printn/<int:id>')
+@login_required
+def new_print_bill(id):
+	bill = Bill.query.filter_by(id=id).first()
+	data = DictToObject(**all_bill_data(bill))
+	return render_template('new_print.html', data=data, curent_time=datetime.now().strftime("%d %B, %Y %H:%M%p"))
 
 @bill_blueprint.route('/lodge_data.csv')
 def download_data():
