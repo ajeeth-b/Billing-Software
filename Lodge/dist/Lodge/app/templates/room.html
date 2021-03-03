@@ -60,11 +60,21 @@
 </style>
 
 <div class="container">
+	{% with messages = get_flashed_messages(category_filter=["room-delete"]) %}
+		          {% if messages %}
+		              <p style="color: #13d440; text-align: center;"><i>
+		              {{messages[-1]}}
+		              </i></p>
+		          {% endif %}
+		        {% endwith %}
   <div class="row">
   	{% for i in rooms %}
-	  	<div class="col-xs-12 col-md-6 col-lg-3" onclick="room_click('{{i.room_no}}', '{{i.booked}}')">
-	      <div class="card {% if i.booked %} card-blue {% else %} card-green {% endif %} ">
-		      <div class="card-block">
+	  	<div class="col-xs-12 col-md-6 col-lg-3">
+	      <div class="card {% if i.booked %} card-blue {% else %} card-green {% endif %} " >
+	      	{% if not i.booked and current_user.is_admin() %}
+	      	<button class="btn btn-danger" style="top:0px; right: 0px;position: absolute;" onclick='del_room({{i.id}} )'><span><b>X</b></span></button>
+	      	 {% endif %}
+		      <div class="card-block" onclick="room_click('{{i.room_no}}', '{{i.booked}}')">
 		      	<p>{{i.room_no}}</p>
 		      </div>
 		   </div>
@@ -78,6 +88,14 @@
   				window.location.href = '/book/room/'+room_no;
   			}else{
   				window.location.href = '/room/close/'+room_no;
+  			}
+  		}
+
+  		function del_room(id){
+  			if (confirm('Press ok to delete room')){
+  				window.location = '/room/delete/'+id;
+  			}else {
+  				console.log('not deleted');
   			}
   		}
   	</script>

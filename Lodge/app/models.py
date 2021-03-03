@@ -7,9 +7,16 @@ from flask_login import UserMixin, current_user
 class CustomDBModel(db.Model):
 	__abstract__ = True
 
+	def commit(self):
+		db.session.commit()
+
 	def save(self):
 		db.session.add(self)
-		db.session.commit()
+		self.commit()
+
+	def delete(self):
+		db.session.delete(self)
+		self.commit()
 
 class User(UserMixin, CustomDBModel):
 	id       = db.Column(db.Integer , primary_key=True , autoincrement=True)

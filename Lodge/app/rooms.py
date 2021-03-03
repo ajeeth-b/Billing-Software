@@ -19,3 +19,18 @@ def add_room():
 	new_room = Room(room_no=request.form['room_no'], created_by=current_user.id)
 	new_room.save()
 	return redirect('/')
+
+
+@room.route('/room/delete/<int:id>', methods=['GET'])
+@login_required
+def delete_room(id):
+	room = Room.query.filter_by(id=id).first()
+	if not room:
+		flash('No such room to delete', 'room-delete')
+		return redirect('/')
+	if room.booked:
+		flash('Room '+str(room.room_no)+' is not empty, cannot delete', 'room-delete')
+		return redirect('/')
+	flash('Room '+str(room.room_no)+' successfully deleted', 'room-delete')
+	room.delete()
+	return redirect('/')
