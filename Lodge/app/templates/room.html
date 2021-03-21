@@ -57,6 +57,13 @@
 	.card-blue:hover, .card-blue:focus{
 		background-color: #52b4de;
 	}
+
+	.card-yellow {
+	  background-color: #fffd85;
+	}
+	.card-yellow:hover, .card-yellow:focus{
+		background-color: #faf87d;
+	}
 </style>
 
 <div class="container">
@@ -77,6 +84,12 @@
 		      <div class="card-block" onclick="room_click('{{i.room_no}}', '{{i.booked}}')">
 		      	<p>{{i.room_no}}</p>
 		      </div>
+		      <button class="btn" style="bottom:0px; left: 0px;position: absolute;" >
+		      	<span><b>{{i.room_type}}/{{i.restroom}}</b></span>
+		      </button>
+		      <button class="btn" style="bottom:0px; right: 0px;position: absolute;" >
+		      	<span><b>{{i.rent}}</b></span>
+		      </button>
 		   </div>
 		</div>
   	{% endfor %}
@@ -102,8 +115,9 @@
 
 	<div class="col-xs-12 col-md-6 col-lg-3">
       <div class="card">
-	      <div class="card-block">
-	      	<form action="/add_room" method="post">
+	      <div class="card-block" onclick="window.location='/add_room'">
+	      	<b>+</b>
+	      	<!-- <form action="/add_room" method="post">
 	      		{% with messages = get_flashed_messages(category_filter=["room-error"]) %}
 		          {% if messages %}
 		              <p style="color: #ff1a1a; text-align: center;"><i>
@@ -113,7 +127,7 @@
 		        {% endwith %}
 	      		<input type="number" placeholder="room number" name="room_no">
 	      		<button type="submit">+</button>
-	      	</form>
+	      	</form> -->
 	      </div>
 	   </div>
 	</div>

@@ -27,9 +27,12 @@ class User(UserMixin, CustomDBModel):
 		return current_user.email in app.config['ADMIN_USERS']
 
 class Room(CustomDBModel):
-	id = db.Column(db.Integer , primary_key=True , autoincrement=True)
-	room_no = db.Column(db.Integer , unique=True)
-	booked = db.Column(db.Boolean, default=False)
+	id         = db.Column(db.Integer , primary_key=True , autoincrement=True)
+	room_no    = db.Column(db.Integer , unique=True)
+	booked     = db.Column(db.Boolean, default=False)
+	restroom   = db.Column(db.VARCHAR(30), nullable=False)
+	rent       = db.Column(db.Integer , nullable=False)
+	room_type  = db.Column(db.VARCHAR(30), nullable=False)
 	created_by = db.Column(db.Integer, nullable=True)
 
 class Customer(CustomDBModel):

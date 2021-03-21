@@ -106,7 +106,9 @@ def post_book_room(id):
 		created_by=current_user.id)
 	customer.save()
 
-	bill = Bill(room_id=room.id, customer_id=customer.id, in_time=datetime.utcnow(), 
+	in_time = datetime.strptime(form.in_time, '%Y-%m-%dT%H:%M')
+
+	bill = Bill(room_id=room.id, customer_id=customer.id, in_time=in_time, 
 		advance=form.advance, created_by=current_user.id)
 	bill.save()
 	room.booked = True
@@ -151,13 +153,18 @@ def close_bill_form(id):
 		'zip':customer.zip_code,
 		'contact_number':customer.contact_no,
 		'in_time':bill.in_time.strftime('%Y-%m-%dT%H:%M'),
+		'out_time':datetime.now().strftime('%Y-%m-%dT%H:%M'),
 		'advance':bill.advance,
+		'rent':room.rent,
 	}
 	return render_template('close_bill.html', **form_data)
 
 @bill_blueprint.route('/bill/close', methods=['POST'])
 @login_required
 def close_bill():
+	if 'gst' not in request.form:
+		request.form = request.form.to_dict()
+		request.form.update({'gst':0})
 	form = DictToObject(**request.form)
 
 	bill = Bill.query.filter_by(id=form.id).first()
@@ -188,6 +195,9 @@ def get_custom_bill():
 @bill_blueprint.route('/bill/custom', methods=['POST'])
 @login_required
 def custom_bill():
+	if 'gst' not in request.form:
+		request.form = request.form.to_dict()
+		request.form.update({'gst':0})
 	form = DictToObject(**request.form)
 
 	if not form.room_no or not form.name:

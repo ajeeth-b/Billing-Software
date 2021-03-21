@@ -24,7 +24,7 @@ def post_login():
 	login_user(user)
 	return redirect(_next)
 
-@auth.route('/logout')
+@auth.route('/logout/')
 def logout():
 	logout_user()
 	return redirect('/login')

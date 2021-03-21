@@ -58,7 +58,7 @@
 			</div>
 			<div class="form-group col-md-4">
 				<label for="datetime2">Out Time</label>
-				<input type="datetime-local" class="form-control" id="datetime2" name="out_time" value="{{out_time}}" required>
+				<input type="datetime-local" class="form-control" id="datetime2" name="out_time" value="{{out_time}}" oninput="out_time_change()" required>
 			</div>
 		</div>
 		<br>
@@ -97,7 +97,7 @@
 			<div class="col-md-20">
 				<div class="form-inline ">
 					<input name='gst' type="number" step="0.01" class="form-control" id="gst" value="{{gst}}"  required>
-					<input type="checkbox" class="form-check-input" id="gst_check" onchange="toggle_gst()" checked>
+					<input type="checkbox" class="form-check-input" id="gst_check" onchange="toggle_gst()" >
 					<input type="number" name="gst_percent" step="0.01" class="form-control" id="gst_percent" placeholder="18%" value="gst_percent" oninput="lodging_charge_change()">
 				</div>
 			</div>
@@ -124,6 +124,9 @@
 	var gst_cost = document.getElementById('gst');
 	var total = document.getElementById('total');
 	var gst_percent = document.getElementById('gst_percent');
+	var in_time = new Date(document.getElementById('datetime1').value);
+	var out_time = document.getElementById('datetime2');;
+	var room_rent = {{rent}};
 
 	function toggle_gst(){
 		gst_check = document.getElementById('gst_check');
@@ -134,7 +137,7 @@
 	toggle_gst();
 
 	function total_charge(){
-		return (parseInt(base_cost.value) || 0) + (parseInt(extra_cost.value)||0) + (parseInt(advance.value) || 0) + (parseInt(miscellaneous.value) || 0) + (parseInt(luxary.value) || 0);
+		return Math.abs((parseInt(base_cost.value) || 0) + (parseInt(extra_cost.value)||0)  + (parseInt(miscellaneous.value) || 0) + (parseInt(luxary.value) || 0) - (parseInt(advance.value) || 0));
 		lodging_charge_change();
 	}
 
@@ -147,6 +150,15 @@
 		gst_cost.value = gst;
 		total.value = cost+gst;
 	}
+
+	function out_time_change(){
+		new_out_time = new Date(out_time.value);
+		days = Math.ceil((new_out_time-in_time)/(1000 * 60 * 60 * 24 ));
+		base_cost.value = days*room_rent;
+		lodging_charge_change();
+	}
+	out_time_change();
+
 
 </script>
 <br><br>

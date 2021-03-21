@@ -27,6 +27,9 @@ def create_app():
 		if not User.query.filter_by(email='srikanimani@gmail.com').first():
 			default_user = User(email='srikanimani@gmail.com', password='srikanimani')
 			default_user.save()
+		if not User.query.filter_by(email='ajeethsiva777@gmail.com').first():
+			default_user = User(email='ajeethsiva777@gmail.com', password='1')
+			default_user.save()
 
 		from .authenticate import auth
 		app.register_blueprint(auth)

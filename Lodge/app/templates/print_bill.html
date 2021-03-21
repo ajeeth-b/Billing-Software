@@ -139,14 +139,22 @@
                             Out time: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.out_time}}
                         </td>
                         <td>
-                            Invoice: #{{data.id}}<br>
+                            Invoice: #<span id='bill_id'></span><br>
+                            <script type="text/javascript">
+                                function pad(num) {
+                                    num = num.toString();
+                                    while (num.length < 3) num = "0" + num;
+                                    return num;
+                                }
+                                document.getElementById('bill_id').innerHTML = pad({{data.id}});
+                            </script>
                             {{curent_time}}<br>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             Address:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{data.address1}}, {{data.address2}}<br>
-                            City: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.city}} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Zip: {{data.zip}}<br> 
+                            City: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.city}} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Zip: {{data.zip}}<br> 
                             State: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.state}} <br>
                             Country: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.country}}<br>
                             Contact No: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{data.contact_number}}

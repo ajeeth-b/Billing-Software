@@ -104,7 +104,7 @@ a{
 
 <div class="form-div">
   <div class="form">
-    <form action="/login" method="post">
+    <form action="/add_room" method="post">
         {% with messages = get_flashed_messages(category_filter=["room-error"]) %}
           {% if messages %}
               <p style="color: #ff1a1a; text-align: center;"><i>
@@ -113,16 +113,26 @@ a{
           {% endif %}
         {% endwith %}
       <div class="input-field">
-        <label for="room_no">Email</label>
-        <input type="number" placeholder="201" id="room_no" name="room_no">
+        <label for="room_no">Room No</label>
+        <input type="number" placeholder="201" id="room_no" name="room_no" required>
       </div>
       <div class="input-field">
-        <label for="password">Password</label>
-        <input type="password" placeholder="********" id="password" name="password">
+        <label for="room_type">Room Type</label>
+        <input type="text" placeholder="1B / 2B / Delux" id="room_type" name="room_type" required>
+      </div>
+      <div class="input-field">
+        <label for="restroom">Restroom Type</label>
+        <select id="restroom" name="restroom" required>
+          <option value="W">Western</option>
+          <option value="I">Indian</option>
+        </select>
+      </div>
+      <div class="input-field">
+        <label for="rent">Rent</label>
+        <input type="number" placeholder="500/-" id="rent" name="rent" required>
       </div>
       <div class="action">
-        <!-- <a href="#">forgot your password?</a> -->
-        <button id="btn" type='submit' class="btn">Sign in</button>
+        <button id="btn" type='submit' class="btn">Add</button>
     </form>
     </div>
   </div>
