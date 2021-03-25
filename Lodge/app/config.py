@@ -12,7 +12,7 @@ config = {
 	'SECRET_KEY' : 'thesecret',
 	'SQLALCHEMY_DATABASE_URI' : 'sqlite:///lodge.db',
 	'SQLALCHEMY_TRACK_MODIFICATIONS' : True,
-	'ADMIN_USERS' : ['admin@gmail.com'],
+	'ADMIN_USERS' : ['admin@gmail.com', 'ajeethsiva777@gmail.com'],
 	'ADMIN_EMAIL' : 'admin@gmail.com',
 	'ADMIN_PASSWORD' : 'admin',
 	'DATA_FOLDER':folder,
