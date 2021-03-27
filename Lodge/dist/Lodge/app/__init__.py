@@ -24,8 +24,8 @@ def create_app():
 		if not User.query.filter_by(email=app.config['ADMIN_EMAIL']).first():
 			default_admin = User(email=app.config['ADMIN_EMAIL'], password=app.config['ADMIN_PASSWORD'])
 			default_admin.save()
-		if not User.query.filter_by(email='srikanimani@gmail.com').first():
-			default_user = User(email='srikanimani@gmail.com', password='srikanimani')
+		if not User.query.filter_by(email='srikanimani.skm@gmail.com').first():
+			default_user = User(email='srikanimani.skm@gmail.com', password='srikanimani')
 			default_user.save()
 		if not User.query.filter_by(email='ajeethsiva777@gmail.com').first():
 			default_user = User(email='ajeethsiva777@gmail.com', password='1')
