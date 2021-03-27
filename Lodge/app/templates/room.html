@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
+{% if not current_user.is_admin() %}
 <style type="text/css">
 	a {
 	 -webkit-transition: .25s all;
@@ -9,10 +10,164 @@
 	.card {
 	  padding-left:auto;
 	  padding-right:auto;
-	   min-height:200px;
-	  max-height:250px; 
-	  min-width:200px;
-	  max-width:250px; 
+	   min-height:120px;
+	  max-height:150px; 
+	  min-width:140px;
+	  max-width:170px; 
+	  margin-top:15px;
+	 box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	 -webkit-transition: .25s box-shadow;
+	 transition: .25s box-shadow;
+	}
+	.card-block {
+		-webkit-box-flex:1;
+		-webkit-flex:1 1 auto;
+		-ms-flex:1 1 auto;
+		flex:1 1 auto;
+		padding:1.25rem
+	}
+	.card:focus, .card:hover {
+	 box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+	}
+	.card-inverse .card-img-overlay {
+	 background-color: rgba(51, 51, 51, 0.85);
+	 border-color: rgba(51, 51, 51, 0.85);
+	}
+	.card-img-top{
+	  margin-top:10px;
+	}
+	.col-xs-12{
+	  text-align:center;
+	  margin-left:auto;
+	  margin-right:auto;
+	}
+	.col-lg-1{
+		padding-right: 80px;
+		padding-left: 80px;
+	}
+	.row{
+	  margin-left:auto;
+	  margin-right:auto;
+	}
+	.card-green {
+	  background-color: #9af5a9;
+	}
+	.card-green:hover, .card-green:focus{
+		background-color: #7ce68d;
+	}
+
+	.card-blue {
+	  background-color: #66bee3;
+	}
+	.card-blue:hover, .card-blue:focus{
+		background-color: #52b4de;
+	}
+
+	.card-red {
+	  background-color: #964d3b;
+	}
+	.card-red:hover, .card-red:focus{
+		background-color: #874231;
+	}
+
+	.card-yellow {
+	  background-color: #fffd85;
+	}
+	.card-yellow:hover, .card-yellow:focus{
+		background-color: #faf87d;
+	}
+</style>
+
+<div class="containerssssss" style="margin-right: 80px;">
+	{% with messages = get_flashed_messages(category_filter=["room-delete"]) %}
+		          {% if messages %}
+		              <p style="color: #13d440; text-align: center;"><i>
+		              {{messages[-1]}}
+		              </i></p>
+		          {% endif %}
+		        {% endwith %}
+  <div class="row">
+  	{% for i in rooms %}
+	  	<div class="col-xs-12 col-md-3 col-lg-1">
+	      <div class="card {% if i.booked %} card-red {% else %} card-green {% endif %} " >
+	      	{% if not i.booked and current_user.is_admin() %}
+	      	<button class="btn btn-danger" style="top:0px; right: 0px;position: absolute;" onclick='del_room({{i.id}} )'><span><b>X</b></span></button>
+	      	 {% endif %}
+		      <div class="card-block" onclick="room_click('{{i.room_no}}', '{{i.booked}}')">
+		      	<p><b>{{i.room_no}}</b></p>
+		      </div>
+		      <button class="btn" style="bottom:0px; left: 0px;position: absolute;" >
+		      	<span>{{i.room_type}}/{{i.restroom}}</span>
+		      </button>
+		      <button class="btn" style="bottom:0px; right: 0px;position: absolute;" >
+		      	<span>{{i.rent}}</span>
+		      </button>
+		   </div>
+		</div>
+  	{% endfor %}
+
+  	<script type="text/javascript">
+  		function room_click(room_no, booked){
+  			console.log(booked, booked == 'False');
+  			if (booked == 'False'){
+  				window.location.href = '/book/room/'+room_no;
+  			}else{
+  				window.location.href = '/room/close/'+room_no;
+  			}
+  		}
+
+  		function del_room(id){
+  			if (confirm('Press ok to delete room')){
+  				window.location = '/room/delete/'+id;
+  			}else {
+  				console.log('not deleted');
+  			}
+  		}
+  	</script>
+
+	<div class="col-xs-12 col-md-6 col-lg-3" style="padding-left: 200px;">
+      <div class="card">
+	      <div class="card-block" onclick="window.location='/add_room'">
+	      	<b>+</b>
+	      	<!-- <form action="/add_room" method="post">
+	      		{% with messages = get_flashed_messages(category_filter=["room-error"]) %}
+		          {% if messages %}
+		              <p style="color: #ff1a1a; text-align: center;"><i>
+		              {{messages[-1]}}
+		              </i></p>
+		          {% endif %}
+		        {% endwith %}
+	      		<input type="number" placeholder="room number" name="room_no">
+	      		<button type="submit">+</button>
+	      	</form> -->
+	      </div>
+	   </div>
+	</div>
+
+	<!-- <div class="col-xs-12 col-md-6 col-lg-3">
+      <div class="card">
+	      <div class="card-block">
+	        <h4 class="card-title">Card title.</h4>
+	        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer..</p>
+	      </div>
+	   </div>
+	</div> -->
+	
+  </div>
+</div>
+{% else %}
+<style type="text/css">
+	a {
+	 -webkit-transition: .25s all;
+	 transition: .25s all;
+	}
+	.card {
+	  padding-left:auto;
+	  padding-right:auto;
+	   min-height:120px;
+	  max-height:150px; 
+	  min-width:140px;
+	  max-width:170px;  
 	  margin-top:15px;
 	 box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 	 -webkit-transition: .25s box-shadow;
@@ -58,6 +213,13 @@
 		background-color: #52b4de;
 	}
 
+	.card-red {
+	  background-color: #964d3b;
+	}
+	.card-red:hover, .card-red:focus{
+		background-color: #874231;
+	}
+
 	.card-yellow {
 	  background-color: #fffd85;
 	}
@@ -77,7 +239,7 @@
   <div class="row">
   	{% for i in rooms %}
 	  	<div class="col-xs-12 col-md-6 col-lg-3">
-	      <div class="card {% if i.booked %} card-blue {% else %} card-green {% endif %} " >
+	      <div class="card {% if i.booked %} card-red {% else %} card-green {% endif %} " >
 	      	{% if not i.booked and current_user.is_admin() %}
 	      	<button class="btn btn-danger" style="top:0px; right: 0px;position: absolute;" onclick='del_room({{i.id}} )'><span><b>X</b></span></button>
 	      	 {% endif %}
@@ -117,30 +279,10 @@
       <div class="card">
 	      <div class="card-block" onclick="window.location='/add_room'">
 	      	<b>+</b>
-	      	<!-- <form action="/add_room" method="post">
-	      		{% with messages = get_flashed_messages(category_filter=["room-error"]) %}
-		          {% if messages %}
-		              <p style="color: #ff1a1a; text-align: center;"><i>
-		              {{messages[-1]}}
-		              </i></p>
-		          {% endif %}
-		        {% endwith %}
-	      		<input type="number" placeholder="room number" name="room_no">
-	      		<button type="submit">+</button>
-	      	</form> -->
 	      </div>
 	   </div>
-	</div>
-
-	<!-- <div class="col-xs-12 col-md-6 col-lg-3">
-      <div class="card">
-	      <div class="card-block">
-	        <h4 class="card-title">Card title.</h4>
-	        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer..</p>
-	      </div>
-	   </div>
-	</div> -->
-	
+	</div>	
   </div>
 </div>
+{% endif %}
 {% endblock %}
