@@ -1,0 +1,390 @@
+﻿
+[Header]
+ProjectFileVersion = 1.1
+[General]
+Program name = SKM
+Program version = 1.0
+Windows 2000 = 0
+Windows XP = 1
+Windows Server 2003 = 1
+Windows Vista = 1
+Windows Server 2008 = 1
+Windows 7 = 1
+Windows 8 = 1
+Windows 10 = 1
+Windows Server 2016 = 1
+DoNotCheckOS = 0
+Company name = Fuzetech Solutions
+Website = http://fuzetechsolutions.epizy.com/
+SFA = 0
+DFA = 0
+Comp = 1
+[Graphics]
+Wizard image = <main>
+Header image = <main>
+Show Label = 1
+VisualStylesEnabled = 1
+[Files]
+Installation path = <ProgramFiles>\<Company>\<AppName>\
+Autcip = 1
+[Uninstall]
+Vwau = 0
+Website = https://
+Include uninstaller = 1
+Uninstaller filename = Uninstall SKM
+UseCustomDisplayIcon = 0
+CustomDisplayIcon = <InstallPath>\
+[Licence]
+Licence dialog = 0
+[Finish]
+Sart program = 0
+Reboot computer = 0
+Program = <InstallPath>\
+ProgramArguments = 
+[Shortcuts]
+Allowtc = 0
+Shortcut path = <Company>\<AppName>\
+[Serialoptions]
+Allows = 0
+Number = 1000
+Mask = #####-#####-#####-#####
+[SplashScreen]
+Image = 
+Sound = 
+Time = 2
+PlaySound = 0
+Allow = 0
+[Build]
+File = G:\Fuzzetech\Lodge billing\installforge\o4-bill heading color change\Lodge Setup.exe
+SetupIconPath = ..\icons\ancient.ico
+UninstallIconPath = ..\icons\ancient.ico
+CompressionMethod = 0
+CompressionLevel = 2
+[Updater]
+Allow = 0
+1 = <AppName>
+2 = <AppVersion>
+3 = http://
+4 = http://
+5 = http://
+6 = Update
+Language = 0
+RunProg = 
+RunProgs = 0
+Execdlls = 0
+[Languages]
+1
+[Files/Dirs]
+C:\Users\Ajeeth\Desktop\Lodge\app\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\certifi\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\cryptography\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\cryptography-2.9-py3.8.egg-info\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\flask_admin\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\greenlet\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\Include\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\markupsafe\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\MySQLdb\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\PIL\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\psutil\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\psycopg2\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\PyInstaller\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\sqlalchemy\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\win32com\
+N/A
+[Folder]
+C:\Users\Ajeeth\Desktop\Lodge\_asyncio.pyd
+62.1 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_bz2.pyd
+84.1 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_cffi_backend.cp38-win_amd64.pyd
+176.5 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_ctypes.pyd
+123.1 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_decimal.pyd
+262.6 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_elementtree.pyd
+173.1 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_hashlib.pyd
+45.1 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_lzma.pyd
+247.1 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_multiprocessing.pyd
+28.6 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_mysql_connector.cp38-win_amd64.pyd
+53.5 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_overlapped.pyd
+44.6 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_queue.pyd
+27.6 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_socket.pyd
+77.1 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_sqlite3.pyd
+85.6 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_ssl.pyd
+150.1 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\_win32sysloader.pyd
+11 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-console-l1-1-0.dll
+20.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-datetime-l1-1-0.dll
+20 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-debug-l1-1-0.dll
+20.1 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-errorhandling-l1-1-0.dll
+20 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-file-l1-1-0.dll
+23.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-file-l1-2-0.dll
+20 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-file-l2-1-0.dll
+20 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-handle-l1-1-0.dll
+20 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-heap-l1-1-0.dll
+20.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-interlocked-l1-1-0.dll
+20 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-libraryloader-l1-1-0.dll
+21.1 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-localization-l1-2-0.dll
+22.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-memory-l1-1-0.dll
+20.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-namedpipe-l1-1-0.dll
+20 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-processenvironment-l1-1-0.dll
+21 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-processthreads-l1-1-0.dll
+22 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-processthreads-l1-1-1.dll
+20.6 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-profile-l1-1-0.dll
+19.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-rtlsupport-l1-1-0.dll
+20.6 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-string-l1-1-0.dll
+20 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-synch-l1-1-0.dll
+22 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-synch-l1-2-0.dll
+20.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-sysinfo-l1-1-0.dll
+21 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-timezone-l1-1-0.dll
+20.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-core-util-l1-1-0.dll
+20 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-conio-l1-1-0.dll
+21 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-convert-l1-1-0.dll
+24 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-environment-l1-1-0.dll
+20.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-filesystem-l1-1-0.dll
+22 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-heap-l1-1-0.dll
+21 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-locale-l1-1-0.dll
+20.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-math-l1-1-0.dll
+28.8 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-multibyte-l1-1-0.dll
+28.1 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-process-l1-1-0.dll
+21.1 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-runtime-l1-1-0.dll
+24.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-stdio-l1-1-0.dll
+26 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-string-l1-1-0.dll
+26 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-time-l1-1-0.dll
+22.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\api-ms-win-crt-utility-l1-1-0.dll
+20.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\base_library.zip
+767.9 KB
+zip
+C:\Users\Ajeeth\Desktop\Lodge\clr.pyd
+6 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\libcrypto-1_1.dll
+3.3 MB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\libcrypto-1_1-x64.dll
+3.2 MB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\libffi-7.dll
+32 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\libmysql.dll
+6.5 MB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\libssl-1_1.dll
+678 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\libssl-1_1-x64.dll
+666 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\Lodge.exe
+6.4 MB
+exe
+C:\Users\Ajeeth\Desktop\Lodge\Lodge.exe.manifest
+1.5 KB
+manifest
+C:\Users\Ajeeth\Desktop\Lodge\mfc140u.dll
+5.4 MB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\pyexpat.pyd
+184.6 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\Python.Runtime.dll
+169.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\python38.dll
+4 MB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\pythoncom38.dll
+558 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\pywintypes38.dll
+138 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\select.pyd
+26.1 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\sqlite3.dll
+1.4 MB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\ucrtbase.dll
+1002 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\unicodedata.pyd
+1 MB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\VCRUNTIME140.dll
+98.5 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\VCRUNTIME140_1.dll
+43.3 KB
+dll
+C:\Users\Ajeeth\Desktop\Lodge\win32api.pyd
+129.5 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\win32event.pyd
+26 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\win32process.pyd
+51 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\win32trace.pyd
+21 KB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\win32ui.pyd
+1.4 MB
+pyd
+C:\Users\Ajeeth\Desktop\Lodge\win32wnet.pyd
+35 KB
+pyd
+[Licence_Begin]
+118
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\cf0\fs20\par
+}
+ [Licence_End]
+[Registry]
+[Variables]
+[SCs]
+Desktop
+SKM
+<InstallPath>\Lodge.exe
+
+
+0
+[IFP_End]
+[Serials]
+[Serials_End]
+[Commands]
