@@ -1,1 +1,1 @@
-pyinstaller --onedir --noconsole --add-data "G:/Fuzzetech/Lodge billing/flask/test1/app;app/" --add-data "G:/Fuzzetech/Lodge billing/flask/test1/flask_admin;flask_admin/" Lodge.py --icon=skm.ico
+pyinstaller --onedir --noconsole --add-data "/dir/app;app/" --add-data "/dir/flask_admin;flask_admin/" Lodge.py --icon=skm.ico
