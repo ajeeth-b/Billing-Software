@@ -1,5 +1,5 @@
 # Billing-Software
-A software requirement given by [Fuzetech solutions](www.fuzetechsolutions.epizy.com) to ease the billing the lodge.
+A freelanced project given by [Fuzetech solutions](www.fuzetechsolutions.epizy.com) to ease the billing the lodge.
 
 This is desktop application developed using Python-Flask.
 
