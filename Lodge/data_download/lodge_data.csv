@@ -1,0 +1,2 @@
+id,room_id,room_no,customer_id,name,no_of_person,address1,address2,city,state,country,zip,contact_number,in_time,out_time,advance,cost,miscellaneous,luxary,extra_cost,gst,total
+1,1,100,1,Yep,1,t,t,t,Tamilnadu,India,641035,2313253421,2022/06/15 09:17 PM,,1000,,,,,,
