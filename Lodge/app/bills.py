@@ -4,6 +4,7 @@ from datetime import datetime
 from math import ceil
 from flask_login import login_required, current_user
 import csv
+import json
 
 bill_blueprint = Blueprint('bills', __name__)
 
@@ -190,7 +191,9 @@ def close_bill():
 @bill_blueprint.route('/bill/custom', methods=['GET'])
 @login_required
 def get_custom_bill():
-	return render_template('custom_bill.html')
+	rooms = Room.query.all()
+	room_detail = {room.room_no: room.rent for room in rooms}
+	return render_template('custom_bill.html', room_detail=json.dumps(room_detail))
 
 @bill_blueprint.route('/bill/custom', methods=['POST'])
 @login_required
