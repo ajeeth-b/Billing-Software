@@ -53,16 +53,16 @@
 		</div>
 		<div class="form-group col-md-3">
 			<label for="room_no">Room no</label>
-			<input name="room_no" type="number" class="form-control" id="room_no" placeholder="201" value="{{room_no}}" required>
+			<input name="room_no" type="number" class="form-control" id="room_no" placeholder="201" value="{{room_no}}" oninput="on_room_change()" required>
 		</div>
 		<div class="form-row col-md">
 			<div class="form-group col-md-4">
 				<label for="datetime1">In Time</label>
-				<input type="datetime-local" class="form-control" id="datetime1" name="in_time" value="{{in_time}}" required>
+				<input type="datetime-local" class="form-control" id="datetime1" name="in_time" value="{{in_time}}" oninput="on_time_change()" required>
 			</div>
 			<div class="form-group col-md-4">
 				<label for="datetime2">Out Time</label>
-				<input type="datetime-local" class="form-control" id="datetime2" name="out_time" value="{{out_time}}" required>
+				<input type="datetime-local" class="form-control" id="datetime2" name="out_time" value="{{out_time}}" oninput="on_time_change()" required>
 			</div>
 		</div>
 		<br>
@@ -128,6 +128,10 @@
 	var gst_cost = document.getElementById('gst');
 	var total = document.getElementById('total');
 	var gst_percent = document.getElementById('gst_percent');
+	gst_percent.value = 18
+	var room_no = document.getElementById('room_no');
+
+	var room_details = {{ room_detail|safe }}
 
 	function toggle_gst(){
 		gst_check = document.getElementById('gst_check');
@@ -138,7 +142,7 @@
 	toggle_gst();
 
 	function total_charge(){
-		return (parseInt(base_cost.value) || 0) + (parseInt(extra_cost.value)||0) + (parseInt(advance.value) || 0) + (parseInt(miscellaneous.value) || 0) + (parseInt(luxary.value) || 0);
+		return (parseInt(base_cost.value) || 0) + (parseInt(extra_cost.value)||0) - (parseInt(advance.value) || 0) + (parseInt(miscellaneous.value) || 0) + (parseInt(luxary.value) || 0);
 		lodging_charge_change();
 	}
 
@@ -150,6 +154,37 @@
 		}
 		gst_cost.value = gst;
 		total.value = cost+gst;
+	}
+
+	function on_time_change(){
+		let in_time = document.getElementById('datetime1').value;
+		let out_time = document.getElementById('datetime2').value;
+		if(
+			in_time == '' || in_time == null || in_time == undefined ||
+			out_time == '' || out_time == null || out_time == undefined
+		){
+			return false;
+		}
+
+		in_time = new Date(in_time);
+		out_time = new Date(out_time);
+
+		days = Math.ceil((out_time-in_time)/(1000 * 60 * 60 * 24 ));
+		days += 1;
+		base_cost.value = days*get_room_rent();
+		lodging_charge_change();
+	}
+
+	function get_room_rent(){
+		return room_details[room_no.value] || 0;
+	}
+
+	function on_room_change(){
+		let room_rent_cost = get_room_rent();
+		base_cost.value = room_rent_cost;
+		if (on_time_change() === false){
+			lodging_charge_change()
+		}
 	}
 
 </script>
